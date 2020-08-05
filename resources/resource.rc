@@ -1,0 +1,15 @@
+/* =================================================================================== */
+/* Acceleration table definition .rc file                                              */
+/* =================================================================================== */
+#include "resource.h"
+
+/* Table with virtual key codes */
+ID_ACCEL1 ACCELERATORS
+{
+        0x41, ID_AUTO_WORK_MODE, VIRTKEY, CONTROL    // Ctrl-A
+        0x4D, ID_MANUAL_WORK_MODE, VIRTKEY, CONTROL  // Ctrl-M
+        0x70, ID_TOGGLE_GREEN, VIRTKEY               // F1
+        0x71, ID_TOGGLE_YELLOW, VIRTKEY              // F2
+        0x72, ID_TOGGLE_RED, VIRTKEY                 // F3
+        0x1B, ID_ESCAPE, VIRTKEY                     // Esc
+}
