@@ -16,7 +16,7 @@ LIBS = -luser32 -lgdi32
 RESDIR = resources
 
 
-all: Program
+all: Directories Program
 
 #==============================================================================================
 # Dependences (for further creating the object *.o files):
@@ -37,6 +37,14 @@ DEPS_simulation = $(patsubst %, $(IDIR)/%, $(_DEPS_simulation))
 # Dependances for traffic_light.o
 _DEPS_traffic_light = traffic_light.h utils.h software_rendering.h 
 DEPS_traffic_light = $(patsubst %, $(IDIR)/%, $(_DEPS_traffic_light))
+
+#==============================================================================================
+# Rule for make necessary directories
+#==============================================================================================
+.PHONY: Directories
+Directories:
+	mkdir -p build
+	mkdir -p build/obj
 
 #==============================================================================================
 # Rules for compilation of the resources:
