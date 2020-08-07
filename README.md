@@ -46,4 +46,4 @@ $ ./Program
 - <img src="/img/folder.png" alt="folder" width=18px> `img/` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Images, necessary for the documentation
 
 ## Licence
-Traffic light simulator code in this project is available under the GPLv3 license. You can find the license file here: [LICENSE](/LICENSE)
+Traffic light simulator code in this project is available under the `GPLv3` license. You can find the license file here: [LICENSE](/LICENSE)
