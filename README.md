@@ -39,8 +39,11 @@ $ cd build/
 $ ./Program
 ```
 
-## Project layout
-Information about the project layout. Files and descriptions.
+## Project Organization
+- <img src="/img/folder.png" alt="folder" width=18px> `include/` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Public header files
+- <img src="/img/folder.png" alt="folder" width=18px> `resources/` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Application resources (Accelerator table)
+- <img src="/img/folder.png" alt="folder" width=18px> `src/` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Source code files
+- <img src="/img/folder.png" alt="folder" width=18px> `img/` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Images, necessary for the documentation
 
 ## Licence
-Information about the used license.
+Traffic light simulator code in this project is available under the GPLv3 license. You can find the license file here: [LICENSE](/LICENSE)
