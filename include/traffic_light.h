@@ -7,6 +7,14 @@
 
 #include <utils.h>
 
+/* Enumerator to denote the section */
+enum Traffic_Light_Section {
+    TLSEC_GREEN, /* Traffic light green section */
+    TLSEC_YELLOW, /* Traffic light yellow section */
+    TLSEC_RED /* Traffic light red section */                            
+};
+typedef enum Traffic_Light_Section Traffic_Light_Section_t;
+
 /* Enumerator with 2 different working modes of the traffic light */
 enum Traffic_Light_Work_Mode {
     WM_AUTO, /* Work in automatic mode */
@@ -34,7 +42,9 @@ typedef enum Traffic_Light_State Traffic_Light_State_t;
 struct Traffic_Light {
     const u32 width; /* Traffic light width */
     const u32 height; /* Traffic light height */
-    const u32 bkg_color; /* Color of the traffic light background */
+    const u32 pnl_color; /* Color of the traffic light front pannel */
+    const u32 pnl_light_color; /* Color of the pannel light part */
+    const u32 pnl_shadow_color; /* Color of the pannel shadow part */
     const u32 green_color; /* Color of the green light */
     const u32 yellow_color; /* Color of the yellow light */
     const u32 red_color; /* Color of the red light */
@@ -64,11 +74,7 @@ Traffic_Light_t* traffic_light_constructor(void);
 void traffic_light_destructor(Traffic_Light_t *traffic_light);
 
 /* Initialization of the traffic light object */
-void traffic_light_init(Traffic_Light_t *traffic_light, const Render_Buffer_t *render_buffer, const u32 width,
-                        const u32 height, const u32 bkg_color, const u32 green_color, const u32 yellow_color,
-                        const u32 red_color, const u32 off_color, const u32 light_radius,
-                        const f32 *times_array, const b32 *green_lights_array, const b32 *yellow_lights_array,
-                        const b32 *red_lights_array);
+void traffic_light_init(Traffic_Light_t *traffic_light, const Render_Buffer_t *render_buffer);
 
 /* Method for set the auto mode of the traffic light */
 void traffic_light_set_auto_mode(Traffic_Light_t *traffic_light);

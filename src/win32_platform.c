@@ -17,7 +17,7 @@
 #define UNUSED(x) (void)(x)
 
 /* Window dimensions */
-#define WINDOW_WIDTH 240
+#define WINDOW_WIDTH 220
 #define WINDOW_HEIGHT 600
 
 /* Timer parameters */
@@ -53,8 +53,8 @@ window_callback (HWND hwnd, UINT message, WPARAM w_param, LPARAM l_param) {
         GetClientRect(hwnd, &rect);
         
         /* Determine dimensions of the client area */
-        render_buffer.width = rect.right - rect.left;
-        render_buffer.height = rect.bottom - rect.top;
+        render_buffer.width = (u32)(rect.right - rect.left);
+        render_buffer.height = (u32)(rect.bottom - rect.top);
         
         /* Memory allocation with windows layer VirtualAlloc function */
         render_buffer.pixels = VirtualAlloc(0, sizeof(u32) * render_buffer.width * render_buffer.height,
@@ -62,8 +62,8 @@ window_callback (HWND hwnd, UINT message, WPARAM w_param, LPARAM l_param) {
         
         /* Fill the bitmap_info */
         render_buffer.bitmap_info.bmiHeader.biSize = sizeof(render_buffer.bitmap_info.bmiHeader);
-        render_buffer.bitmap_info.bmiHeader.biWidth = render_buffer.width;
-        render_buffer.bitmap_info.bmiHeader.biHeight = render_buffer.height;
+        render_buffer.bitmap_info.bmiHeader.biWidth = (LONG)render_buffer.width;
+        render_buffer.bitmap_info.bmiHeader.biHeight = (LONG)render_buffer.height;
         render_buffer.bitmap_info.bmiHeader.biPlanes = 1;
         render_buffer.bitmap_info.bmiHeader.biBitCount = 32;
         render_buffer.bitmap_info.bmiHeader.biCompression = BI_RGB;
@@ -81,8 +81,8 @@ window_callback (HWND hwnd, UINT message, WPARAM w_param, LPARAM l_param) {
             key_pressed = KP_NONE;
             
             /* Render the calculated bitmap */
-            StretchDIBits(hdc, 0, 0, render_buffer.width, render_buffer.height, 0, 0,
-                          render_buffer.width, render_buffer.height, render_buffer.pixels,
+            StretchDIBits(hdc, 0, 0, (int)render_buffer.width, (int)render_buffer.height, 0, 0,
+                          (int)render_buffer.width, (int)render_buffer.height, render_buffer.pixels,
                           &render_buffer.bitmap_info, DIB_RGB_COLORS, SRCCOPY);
 
             /* Calculate the delta time */
@@ -139,6 +139,7 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int n
 
     /* Avoid warning messages about not used function parameters */
     UNUSED(hPrevInstance);
+    UNUSED(lpCmdLine);
     UNUSED(nShowCmd);
 
     /* Load the accelerator table from resources */

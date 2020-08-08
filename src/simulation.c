@@ -13,20 +13,23 @@
 
 /* Define different simulation constants */
 /* World constants */
-static const u32 WORLD_BKG_COLOR = 0xefefef; /* World background color */
+const u32 WORLD_BKG_COLOR = 0xefefef; /* World background color */
+
 /* Traffic light constants */
-static const u32 TLIGHT_WIDTH = 200; /* Width of the traffic light */
-static const u32 TLIGHT_HEIGHT = 540; /* Height of the traffic light */
-static const u32 TLIGHT_BKG_COLOR = 0x000000; /* Color of the traffic light background */
-static const u32 TLIGHT_GREEN_COLOR = 0x00ff00; /* Color of the green light */
-static const u32 TLIGHT_YELLOW_COLOR = 0xffff00; /* Color of the yellow light */
-static const u32 TLIGHT_RED_COLOR = 0xff0000; /* Color of the red light */
-static const u32 TLIGHT_OFF_COLOR = 0x808080; /* Color of the turned off color */
-static const u32 TLIGHT_LIGHT_RADIUS = 70; /* Radius of the light */
-static const f32 TLIGHT_TIMES_ARRAY[] = {10.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 3.0f, 10.0f, 3.0f};
-static const b32 TLIGHT_GREEN_LIGHTS_ARRAY[]  = {1, 0, 1, 0, 1, 0, 1, 0, 0, 0};
-static const b32 TLIGHT_YELLOW_LIGHTS_ARRAY[] = {0, 0, 0, 0, 0, 0, 0, 1, 0, 1};
-static const b32 TLIGHT_RED_LIGHTS_ARRAY[]    = {0, 0, 0, 0, 0, 0, 0, 0, 1, 1};
+const u32 TLIGHT_WIDTH = 180; /* Width of the traffic light */
+const u32 TLIGHT_HEIGHT = 540; /* Height of the traffic light (3 times gires than width)*/
+const u32 TLIGHT_PNL_COLOR = 0x323232; /* Color of the traffic light front pannel */
+const u32 TLIGHT_PNL_LIGHT_COLOR = 0x787878; /* Color of the pannel light part */
+const u32 TLIGHT_PNL_SHADOW_COLOR = 0x191919; /* Color of the pannel shadow part */
+const u32 TLIGHT_GREEN_COLOR = 0x00ff00; /* Color of the green light */
+const u32 TLIGHT_YELLOW_COLOR = 0xffff00; /* Color of the yellow light */
+const u32 TLIGHT_RED_COLOR = 0xff0000; /* Color of the red light */
+const u32 TLIGHT_OFF_COLOR = 0x000000; /* Color of the turned off color */
+const u32 TLIGHT_LIGHT_RADIUS = 70; /* Radius of the light */
+const f32 TLight_times_array[10] = {10.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 3.0f, 10.0f, 3.0f};
+const b32 TLight_green_lights_array[10]  = {1, 0, 1, 0, 1, 0, 1, 0, 0, 0};
+const b32 TLight_yellow_lights_array[10] = {0, 0, 0, 0, 0, 0, 0, 1, 0, 1};
+const b32 TLight_red_lights_array[10]    = {0, 0, 0, 0, 0, 0, 0, 0, 1, 1};
 
 /* Define different object and variables necessary for the simulation */
 static Simulation_State_t simulation_state = SST_OBJECTS_CREATION; /* Current simulation state */
@@ -59,10 +62,7 @@ simulate_traffic_light(f32 dtime, Key_Pressed_t key_pressed, Render_Buffer_t *re
         /* Initialization and reset procedure                                                          */
         /* =========================================================================================== */
 
-        traffic_light_init(traffic_light, render_buffer, TLIGHT_WIDTH, TLIGHT_HEIGHT, TLIGHT_BKG_COLOR,
-                           TLIGHT_GREEN_COLOR, TLIGHT_YELLOW_COLOR, TLIGHT_RED_COLOR, TLIGHT_OFF_COLOR,
-                           TLIGHT_LIGHT_RADIUS, TLIGHT_TIMES_ARRAY, TLIGHT_GREEN_LIGHTS_ARRAY,
-                           TLIGHT_YELLOW_LIGHTS_ARRAY, TLIGHT_RED_LIGHTS_ARRAY);
+        traffic_light_init(traffic_light, render_buffer);
         
         /* Jump to the next simulation stage */
 	simulation_state = SST_INIT_RENDER;
