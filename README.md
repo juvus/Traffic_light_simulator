@@ -13,13 +13,17 @@ When the application is running, the traffic light can be controlled using the k
 `Ctrl + M` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Switch to the manual operation mode<br>
 `Ctrl + A`	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Switch to the automatic operation mode
 
-When switching to the automatic operation mode, the traffic light starts its work from the state “green light is on”. When switching to the manual operation mode, sections preserve their states that were before the switch. In this mode, sections are switched on and off as follows:
+When switching to the automatic operation mode, the traffic light starts its work from the state “green light is on”. State diagram for the automatic mode is shown in Fig. 2. Duration of the states can be easily changed by modifying constants in `simulation.c` file. When switching to the manual operation mode, sections preserve their states that were before the switch. In this mode, sections are switched on and off as follows:
 
 `F1` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Turning green section on/off<br>
 `F2`	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Turning yellow section on/off<br>
 `F3`	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Turning red section on/off
 
 Regardless of the operation mode, pressing the `ESC` key terminates the application.
+
+<img src="/img/state_diagram.png" alt="Traffic light state diagram" width=100%>
+
+**Fig.2.** Set of possible states of the traffic light working in automation mode.
 
 ## Install from source
 Installation, compilation and run of the application occurs when executing commands in a terminal window (The method is described for a UNIX-like terminal, for example, Bash from MSYS2. It also requires a working Mingw-w64 - GCC compiler and configured paths).
